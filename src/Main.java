@@ -6,7 +6,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Main {
     static int SpielerLeben = 115; //Die SpielerLeben werden für alle Klassen zugänglich gemacht
-    static int materialHolz = 0; //        ""
+    static int materialHolz = 6000; //        ""
 
     public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException { //wird für Musik benötigt
 

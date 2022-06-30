@@ -34,7 +34,11 @@ public class Bauen {
             Verbesserung = bauen.nextLine();
             switch (Verbesserung) {
                 case "4" -> {
-                    System.out.println("Du benötigst insgesamt " + materialBenötigt.get(0) + " Materialien für dein nächstes Upgrade");
+                    if (materialBenötigt.isEmpty()){
+                        System.out.println("Du hast schon das höchste Level erreicht! ヽ(´▽`)/ ");
+                    }else {
+                        System.out.println("Du benötigst insgesamt " + materialBenötigt.get(0) + " Materialien für dein nächstes Upgrade");
+                    }
                 }
                 case "5" -> {
                     System.out.println("Du hast: " + MaterialHolz + " Materialien");
