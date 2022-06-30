@@ -8,9 +8,9 @@ public class Kampf {
 
         int Schaden; //Schaden den der Spieler verursacht //
         String Gegner ; //Siehe Klasse "Name"
-        int GegnerLeben ; //Gegner bekommt eine Zufällige Lebensanzahl zwischen 20 und 100
+        int GegnerLeben ; //Gegner bekommt eine zufällige Lebensanzahl zwischen 20 und 100
 
-        if(Bauen.HütteLevel != Bauen.MaxLevelHütte){
+        if(Bauen.HütteLevel != Bauen.MaxLevelHütte){ //Bedingung um mit Endboss zu kämpfen
             Gegner = Name.name();
             GegnerLeben = ThreadLocalRandom.current().nextInt(20,101);
         }else{
@@ -64,7 +64,7 @@ public class Kampf {
                 case "3" -> {
                     int Dmg = 0;
                     if (Bauen.HütteLevel == Bauen.MaxLevelHütte){
-                        Schaden = 99999; //Endgame belohnung
+                        Schaden = 99999; //Endgame belohnung um Endboss zu besiegen, allerdings "geheim"
                         GegnerLeben = GegnerLeben - Schaden;
                         System.out.println("Du hast " + Schaden + " Schaden gemacht!");
                         System.out.println("Gegnerische Leben " + GegnerLeben);
@@ -73,7 +73,7 @@ public class Kampf {
                     if(GegnerLeben >= 1) {
                         int GegnerDmg;
                         if (Bauen.HütteLevel == Bauen.MaxLevelHütte){
-                            GegnerDmg = GegnerSchaden.schaden(Dmg) / 10;
+                            GegnerDmg = GegnerSchaden.schaden(Dmg) / 10; //Spieler muss mit case 3 angreifen, da hier der Schaden des Endbosses minimiert wird und der Schaden des Spielers maximiert
                         }else {
                             GegnerDmg = GegnerSchaden.schaden(Dmg);
                         }

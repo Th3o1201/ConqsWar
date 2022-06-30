@@ -8,7 +8,7 @@ public class Main {
     static int SpielerLeben = 115; //Die SpielerLeben werden für alle Klassen zugänglich gemacht
     static int materialHolz = 5000; //        ""
 
-    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException { //wird für Musik benötigt
 
 //Die Klasse "Geschichte" wird mithilfe einer for Schleife stück für stück ausgelesen, der Spieler kann kontrollieren, wann er die nächste Zeile lesen möchte
         boolean storyContinue = true;
