@@ -7,5 +7,12 @@ public class Story {
 
         return Intro;
     }
+    public static String[] boss() {
+        //Geschichte des Bosses wird in Main nach maximierung der Hütte aufgerufen
+        String [] BossGeschichte = {"Du hast es geschafft, deine Hütte ist nun vollständig verbessert.", "Doch es gibt Nutzer der Macht, die dich weiterhin verfolgt haben.", "Einer davon ist der gefürchtete Chosen One! Er hat dich gejagt, ohne das du seiner Existenz überhaupt bewusst warst.",
+                "Nun hat er von einem reisenden Händler, welcher deine mickrige Hütte auf seiner durchreise gesehen hat, herausbekommen, wo du dich befindest.", "Mach dich bereit dem mächtigsten Macht Nutzer die Stirn zu bieten!"};
+
+        return BossGeschichte;
+    }
 }
 

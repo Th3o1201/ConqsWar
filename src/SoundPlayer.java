@@ -3,11 +3,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class SoundPlayer {
-//Aus internet geklaut lololololoollool
+//Aus internet geklaut
 
     Clip clip;
 
-    // get the clip status
+
     String thestatus;
 
     AudioInputStream audioStream;

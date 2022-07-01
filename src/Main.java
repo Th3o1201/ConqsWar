@@ -8,10 +8,11 @@ public class Main {
     static int SpielerLeben = 115; //Die SpielerLeben werden für alle Klassen zugänglich gemacht
     static int materialHolz = 6000; //        ""
 
-    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException { //wird für Musik benötigt
+    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException { //wird für Musik benötigt, falls der Pfad nicht erkannt wird, wird ein Fehler angezeigt
 
 //Die Klasse "Geschichte" wird mithilfe einer for Schleife stück für stück ausgelesen, der Spieler kann kontrollieren, wann er die nächste Zeile lesen möchte
         boolean storyContinue = true;
+
         String[] story = Story.Geschichte();
 
         for (int i = 0; i < story.length; i++) {
@@ -37,8 +38,8 @@ public class Main {
         SpielerLeben = Kampf.kampf(SpielerLeben); //Story Kampf
 //Kurze Erklärung des Prinzips des Spiels
         System.out.println();
-        System.out.println("Du hast die Auswahlmöglichkeit zwischen insgesamt 3 Optionen. ");
-        System.out.println("Du hast aber niemals die Möglichkeit zwischen allen zu wählen");
+        System.out.println("Du hast nun die Auswahlmöglichkeit zwischen insgesamt 3 Optionen. ");
+        System.out.println("Du hast aber niemals die Möglichkeit zwischen allen zu wählen.");
         System.out.println("Du brauchst dich auch nicht selbst zu heilen, bei jedem Durchlauf hast du eine 4% Chance deine Leben vollständig zu regenerieren");
 //Erste Chance muss außerhalb der while Schleife sein, da ansonsten nach jeder Eingabe, egal ob richtig oder falsch, eine neue Chance generiert wird
         double AuswahlChance;
@@ -46,23 +47,50 @@ public class Main {
         AuswahlChance = r.nextDouble(); //Randomizer selbes Prinzip wie bei Klasse "GegnerSchaden"
 
         //Initialisiere die Upgrade-Liste
-        Bauen.initialize();
+        Bauen.initialisieren();
 
         //Schleife für das Spiel selbst, wenn der Spieler stirbt, ist das Spiel automatisch vorbei
         while (SpielerLeben >= 1) {
-            //Endboss
+
             if(Bauen.HütteLevel == Bauen.MaxLevelHütte){
-                //todo: Story von Boss blablaba
-                //Musik abspielen!
+                //Endboss Story
+                boolean storyWeiter = true;
+                String[] storyBoss = Story.boss(); //Klasse "StoryBoss", Methode "boss" wird aufgerufen
+
+                for (int i = 0; i < storyBoss.length; i++) {
+                    if (storyWeiter) {
+                        System.out.println();
+                        System.out.println(storyBoss[i]);
+                        System.out.println();
+                        System.out.println("Schreibe 'weiter' um fortzufahren! ");
+                    }
+                    Scanner scannerBoss = new Scanner(System.in);
+                    String storyBossEingabe = scannerBoss.nextLine();
+
+                    if (storyBossEingabe.equals("weiter"))
+                        storyWeiter = true;
+                    else {
+                        System.out.println();
+                        System.out.println("Schreibe 'weiter'!");
+                        i--;
+                        storyWeiter = false;
+                    }
+                }
+                //Endboss Musik
                 SoundPlayer.thePath = "src/Full-Song_-Bury-the-Light-Vergils-battle-theme-from-Devil-May-Cry-5-Special-Edition.aiff";
                 SoundPlayer simpleSoundPlayer = new SoundPlayer();
                 simpleSoundPlayer.play();
+
+                //Endboss Kampf
                 Kampf.kampf(SpielerLeben);
-                //breche die Schleife ab, da das Spiel beendet worden ist.
-                break;
+                //Endboss Story nach Kampf
+                System.out.println("Du hast den stärksten besiegt, dein neues Ego bringt dich dazu, die gesamte Galaxie versklaven zu wollen. Du Tötest jeden der dir in den weg kommt");
+                System.out.println();
+                System.out.println("Deine Tyrannei kennt keine Grenzen und du bist das geworden, was du niemals werden wolltest, ein Sith...");
+                break;//breche die Schleife ab, da das Spiel beendet ist.
             }
 
-
+//Spieler soll nicht immer dasselbe auswählen können, sorgt für etwas Abwechslung, da auch kämpfen im Prinzip nicht nötig ist, wird er hiermit dazu gezwungen. Mithilfe eines Randomizer wird dies umgesetzt.
             if (AuswahlChance < 0.24) {
                 System.out.println();
                 System.out.println("Du hast die Möglichkeit zu kämpfen oder zu sammeln!");

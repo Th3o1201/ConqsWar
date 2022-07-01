@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Bauen {
     static int MaxLevelHütte = 5;
     static int HütteLevel = 0; //Wert muss zugänglich für Klasse "Kampf" sein
-    private static List<Integer> materialBenötigt = new LinkedList<>();
+    private static List<Integer> materialBenötigt = new LinkedList<>(); //Der Wert kann nur in dieser Klasse verändert werden
 
-    public static void initialize(){
-        //Erstelle eine Liste der benötigten Materialien.
+    public static void initialisieren(){
+        //Erstelle eine Liste der benötigten Materialien
         materialBenötigt.add(20);
         materialBenötigt.add(35);
         materialBenötigt.add(50);

@@ -10,16 +10,18 @@ public class Kampf {
         String Gegner ; //Siehe Klasse "Name"
         int GegnerLeben ; //Gegner bekommt eine zufällige Lebensanzahl zwischen 20 und 100
 
-        if(Bauen.HütteLevel != Bauen.MaxLevelHütte){ //Bedingung um mit Endboss zu kämpfen
+        if(Bauen.HütteLevel != Bauen.MaxLevelHütte){ //Bedingung um mit Endboss zu kämpfen bzw wann der Endboss erscheint
             Gegner = Name.name();
             GegnerLeben = ThreadLocalRandom.current().nextInt(20,101);
+            System.out.println("Du wirst von einem " + Gegner + " angegriffen, es hat " + GegnerLeben + " Leben, wie möchtest du angreifen? ");
         }else{
-            Gegner = Endboss.theChosenOne;
-            GegnerLeben = Endboss.lifePoints;
+            Gegner = Endboss.theChosenOne; //Der Name des Gegners ist nicht mehr zufällig, sondern wird mit dem des Bosses überschrieben
+            GegnerLeben = Endboss.lifePoints; //Selbes Prinzip wie bei Gegner, nur mit Leben
+            System.out.println("Du wirst vom " +Gegner+ " angegriffen. Er hat " +GegnerLeben+ " Leben, wie möchtest du angreifen? ");
         }
 
 
-        System.out.println("Du wirst von einem " + Gegner + " angegriffen, es hat " + GegnerLeben + " Leben, wie möchtest du angreifen? ");
+
         System.out.println();
         System.out.println("1 für Machtblitz");
         System.out.println("2 für Machtschub");
@@ -66,6 +68,7 @@ public class Kampf {
                     if (Bauen.HütteLevel == Bauen.MaxLevelHütte){
                         Schaden = 99999; //Endgame belohnung um Endboss zu besiegen, allerdings "geheim"
                         GegnerLeben = GegnerLeben - Schaden;
+                        System.out.println("Du hast dein wahres Potential entdeckt!");
                         System.out.println("Du hast " + Schaden + " Schaden gemacht!");
                         System.out.println("Gegnerische Leben " + GegnerLeben);
                         System.out.println();
@@ -76,9 +79,9 @@ public class Kampf {
                             GegnerDmg = GegnerSchaden.schaden(Dmg) / 10; //Spieler muss mit case 3 angreifen, da hier der Schaden des Endbosses minimiert wird und der Schaden des Spielers maximiert
                         }else {
                             GegnerDmg = GegnerSchaden.schaden(Dmg);
+                            System.out.println("Du hast nichts gemacht");
                         }
                         SpielerLeben = SpielerLeben - GegnerDmg;
-                        System.out.println("Du hast nichts gemacht");
                         System.out.println();
                         System.out.println("Der Gegner greift an und hat: " + GegnerDmg + " Schaden gemacht!");
                         System.out.println("Du hast noch " + SpielerLeben + " Leben!");
