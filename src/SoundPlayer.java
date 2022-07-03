@@ -3,12 +3,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class SoundPlayer {
-//Aus internet geklaut
+//Aus internet geklaut + Tutorial befolgt
 
     Clip clip;
-
-
-    String thestatus;
 
     AudioInputStream audioStream;
     static String thePath;
@@ -22,7 +19,7 @@ public class SoundPlayer {
 
         clip.open(audioStream);
 
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        clip.loop(Clip.LOOP_CONTINUOUSLY); //Lied wird in Dauer Schleife gespielt
     }
 
     public void play()
@@ -30,6 +27,5 @@ public class SoundPlayer {
 
         clip.start();
 
-        thestatus = "play";
     }
 }

@@ -18,6 +18,7 @@ public class Kampf {
             Gegner = Endboss.theChosenOne; //Der Name des Gegners ist nicht mehr zufällig, sondern wird mit dem des Bosses überschrieben
             GegnerLeben = Endboss.lifePoints; //Selbes Prinzip wie bei Gegner, nur mit Leben
             System.out.println("Du wirst vom " +Gegner+ " angegriffen. Er hat " +GegnerLeben+ " Leben, wie möchtest du angreifen? ");
+            System.out.println("Eine deiner Fähigkeiten fühlt sich mächtiger an, als je zuvor");
         }
 
 
@@ -42,7 +43,7 @@ public class Kampf {
                     System.out.println("Gegnerische Leben: " + GegnerLeben);
                     System.out.println();
                     if (GegnerLeben >= 1){ //Der Gegner kann nur Angreifen, wenn er mindestens 1 Leben hat
-                        int Dmg = 0; //Schaden wird in Klasse "GegnerSchaden" definiert
+                        int Dmg = 0; //Schaden wird in Klasse "GegnerSchaden" definiert. Anmerkung: ich weiß, es ist eigentlich redundant, aber es funktioniert jetzt so und ich will es nicht mehr ändern, weil ich angst habe das es dann nicht mehr funktioniert
                         int GegnerDmg = GegnerSchaden.schaden(Dmg); //Siehe Klasse "GegnerSchaden"
                         SpielerLeben = SpielerLeben - GegnerDmg; //Die Leben des Spielers werden bei erfolgreichem Angriff des Gegners reduziert
                         System.out.println("Der Gegner greift an und hat: " + GegnerDmg + " Schaden gemacht!");

@@ -6,7 +6,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Main {
     static int SpielerLeben = 115; //Die SpielerLeben werden für alle Klassen zugänglich gemacht
-    static int materialHolz = 0; //        ""
+    static int materialHolz = 555550; //        ""
 
     public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException { //wird für Musik benötigt, falls der Pfad nicht erkannt wird, wird ein Fehler angezeigt
 
@@ -18,14 +18,14 @@ public class Main {
         for (int i = 0; i < story.length; i++) {
             if (storyContinue) {
                 System.out.println();
-                System.out.println(story[i]);
+                System.out.println(story[i]); //Story wird an entsprechender Stelle im Array ausgelesen, der erste Teil wird immer ausgegeben
                 System.out.println();
                 System.out.println("Schreibe 'weiter' um fortzufahren! ");
             }
             Scanner scanner = new Scanner(System.in);
             String storyEingabe = scanner.nextLine();
 
-            if (storyEingabe.equals("weiter"))
+            if (storyEingabe.equals("weiter")) //Nur wenn der Spieler "weiter" schreibt, soll die for Schleife weiter ausgeführt werden
                 storyContinue = true;
             else {
                 System.out.println();
@@ -35,7 +35,7 @@ public class Main {
             }
         }
 
-        SpielerLeben = Kampf.kampf(SpielerLeben); //Story Kampf
+        SpielerLeben = Kampf.kampf(SpielerLeben); //Nach Story erster Kampf
 //Kurze Erklärung des Prinzips des Spiels
         System.out.println();
         System.out.println("Du hast nun die Auswahlmöglichkeit zwischen insgesamt 3 Optionen. ");
@@ -51,7 +51,7 @@ public class Main {
 
         //Schleife für das Spiel selbst, wenn der Spieler stirbt, ist das Spiel automatisch vorbei
         while (SpielerLeben >= 1) {
-
+//Bedingung um mit dem Endboss zu kämpfen
             if(Bauen.HütteLevel == Bauen.MaxLevelHütte){
                 //Endboss Story
                 boolean storyWeiter = true;
@@ -77,9 +77,9 @@ public class Main {
                     }
                 }
                 //Endboss Musik
-                SoundPlayer.thePath = "src/Full-Song_-Bury-the-Light-Vergils-battle-theme-from-Devil-May-Cry-5-Special-Edition.aiff";
-                SoundPlayer simpleSoundPlayer = new SoundPlayer();
-                simpleSoundPlayer.play();
+                SoundPlayer.thePath = "src/Full-Song_-Bury-the-Light-Vergils-battle-theme-from-Devil-May-Cry-5-Special-Edition.aiff"; //Die Klasse "SoundPlayer" wird aufgerufen und der Pfad des gewünschten Liedes wird hier hinterlegt.
+                SoundPlayer LiedSpielen = new SoundPlayer();
+                LiedSpielen.play();//Lied wird abgespielt
 
                 //Endboss Kampf
                 Kampf.kampf(SpielerLeben);
