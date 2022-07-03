@@ -43,7 +43,7 @@ public class Kampf {
                     System.out.println("Gegnerische Leben: " + GegnerLeben);
                     System.out.println();
                     if (GegnerLeben >= 1){ //Der Gegner kann nur Angreifen, wenn er mindestens 1 Leben hat
-                        int Dmg = 0; //Schaden wird in Klasse "GegnerSchaden" definiert. Anmerkung: ich weiß, es ist eigentlich redundant, aber es funktioniert jetzt so und ich will es nicht mehr ändern, weil ich angst habe das es dann nicht mehr funktioniert
+                        int Dmg = 0; //Schaden wird in Klasse "GegnerSchaden" definiert.
                         int GegnerDmg = GegnerSchaden.schaden(Dmg); //Siehe Klasse "GegnerSchaden"
                         SpielerLeben = SpielerLeben - GegnerDmg; //Die Leben des Spielers werden bei erfolgreichem Angriff des Gegners reduziert
                         System.out.println("Der Gegner greift an und hat: " + GegnerDmg + " Schaden gemacht!");
