@@ -4,7 +4,7 @@ public class GegnerSchaden {
     public static int schaden (int GS){ //Schaden wird definiert
 
         if(Bauen.HütteLevel == Bauen.MaxLevelHütte){
-            return Endboss.attackPoints;
+            return Endboss.SchadenEndBoss;
         }
         Random ChanceGegner = new Random();
         int Schaden;

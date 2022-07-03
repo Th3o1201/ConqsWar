@@ -16,7 +16,7 @@ public class Kampf {
             System.out.println("Du wirst von einem " + Gegner + " angegriffen, es hat " + GegnerLeben + " Leben, wie möchtest du angreifen? ");
         }else{
             Gegner = Endboss.theChosenOne; //Der Name des Gegners ist nicht mehr zufällig, sondern wird mit dem des Bosses überschrieben
-            GegnerLeben = Endboss.lifePoints; //Selbes Prinzip wie bei Gegner, nur mit Leben
+            GegnerLeben = Endboss.LebensPunkte; //Selbes Prinzip wie bei Gegner, nur mit Leben
             System.out.println("Du wirst vom " +Gegner+ " angegriffen. Er hat " +GegnerLeben+ " Leben, wie möchtest du angreifen? ");
             System.out.println("Eine deiner Fähigkeiten fühlt sich mächtiger an, als je zuvor");
         }

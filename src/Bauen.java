@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Bauen {
     static int MaxLevelHütte = 5;
-    static int HütteLevel = 0; //Wert muss zugänglich für Klasse "Kampf" sein
+    static int HütteLevel = 0;
     private static List<Integer> materialBenötigt = new LinkedList<>(); //Der Wert kann nur in dieser Klasse verändert werden
 
     public static void initialisieren(){
@@ -29,7 +29,7 @@ public class Bauen {
 
         boolean WeiterMachen = true;
 
-        while(WeiterMachen) { //Schleife, da Spieler ansonsten wieder in Main landet nach einer Auswahl
+        while(WeiterMachen) { //Schleife, da Spieler ansonsten wieder in Main Schleife landet nach einer Auswahl, Bedingung ist immer "true" und wird mit der Auswahl "7" auf "false" gesetzt um raus zu kommen
             Scanner bauen = new Scanner(System.in);
             Verbesserung = bauen.nextLine();
             switch (Verbesserung) {
@@ -47,8 +47,8 @@ public class Bauen {
                     if (materialBenötigt.isEmpty()) //Überprüfung, ob das Level der Hütte bereits maximiert ist, also die Liste leer ist
                         System.out.println("Du hast schon das höchste Level erreicht! ヽ(´▽`)/ ");
 
-                    else if (MaterialHolz >= materialBenötigt.get(0)) { //Bedingung um zu Upgraden, liest immer den ersten Eintrag der Liste aus
-                        MaterialHolz = MaterialHolz - materialBenötigt.get(0); //Holz wird verbraucht
+                    else if (MaterialHolz >= materialBenötigt.get(0)) { //Bedingung um zu Upgraden liest immer den ersten Eintrag der Liste aus
+                        MaterialHolz = MaterialHolz - materialBenötigt.get(0); //Holz des Spielers wird verbraucht
                         HütteLevel++; //Level der Hütte steigt
                         System.out.println("Du hast die Hütte mit " + materialBenötigt.get(0) + " Materialien verbessert.");
                         System.out.println("Du hast noch " + MaterialHolz + " Holz übrig.");
@@ -70,6 +70,6 @@ public class Bauen {
             }
 
         }
-        return MaterialHolz;
+        return MaterialHolz; //Gibt den Wert des Spieler-Holzes wieder
     }
 }
